@@ -24,16 +24,16 @@ export function MailButtonClient({ tripId }: { tripId: string }) {
   }
 
   if (status === "success") {
-    return <span className="text-emerald-600 font-semibold px-4 py-2 bg-emerald-50 rounded-lg">Email Sent! 📬</span>;
+    return <span className="text-emerald-700 dark:text-emerald-200 font-semibold px-4 py-2 bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-500/30 rounded-xl">Email Sent! 📬</span>;
   }
 
   return (
     <div className="flex items-center gap-2">
-      {status === "error" && <span className="text-red-500 text-sm">{message}</span>}
+      {status === "error" && <span className="text-red-500 dark:text-red-300 text-sm">{message}</span>}
       <Button 
         onClick={handleMail} 
         disabled={status === "loading"}
-        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 transition-all"
+        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-200/70 dark:shadow-indigo-900/40 transition-all hover:scale-[1.02]"
       >
         {status === "loading" ? "Sending..." : "Email Me This Trip 📧"}
       </Button>

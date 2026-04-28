@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { VoiceAssistant } from "@/components/VoiceAssistant";
 import "./globals.css";
 
@@ -19,11 +21,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${font.className} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {children}
-        <VoiceAssistant />
+        <ThemeProvider>
+          {children}
+          <VoiceAssistant />
+        </ThemeProvider>
       </body>
     </html>
   );

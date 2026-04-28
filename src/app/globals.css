@@ -122,9 +122,49 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground leading-relaxed;
+    background-image:
+      radial-gradient(circle at 8% 15%, color-mix(in oklab, #7c3aed 10%, transparent) 0%, transparent 42%),
+      radial-gradient(circle at 92% 86%, color-mix(in oklab, #06b6d4 9%, transparent) 0%, transparent 38%);
+    background-attachment: fixed;
   }
   html {
     @apply font-sans;
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at 12% 20%, color-mix(in oklab, #7c3aed 18%, transparent) 0%, transparent 46%),
+      radial-gradient(circle at 85% 82%, color-mix(in oklab, #0ea5e9 14%, transparent) 0%, transparent 42%);
+  }
+
+  h1, h2, h3 {
+    @apply tracking-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@keyframes travel-float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.03); }
+}
+
+@keyframes travel-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@layer utilities {
+  .travel-blob {
+    animation: travel-float 12s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .travel-title-shimmer {
+    background-size: 200% 200%;
+    animation: travel-shimmer 6s linear infinite;
   }
 }

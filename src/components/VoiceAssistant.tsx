@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
+import { Bot, BotOff } from "lucide-react";
 import { Button } from "./ui/button";
 
 export function VoiceAssistant() {
@@ -62,19 +63,19 @@ export function VoiceAssistant() {
   return (
     <div className="fixed bottom-8 right-8 z-50">
       {isActive && (
-        <div className="absolute bottom-20 right-0 bg-white p-4 rounded-2xl shadow-2xl w-64 border border-slate-100 mb-2">
+        <div className="absolute bottom-20 right-0 bg-white/95 dark:bg-slate-900/95 p-4 rounded-2xl shadow-2xl w-64 border border-slate-100 dark:border-slate-700 mb-2 backdrop-blur-sm">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-3 h-3 rounded-full bg-rose-500 animate-pulse" />
-            <p className="text-sm font-bold text-slate-800">Voice Assistant</p>
+            <p className="text-sm font-bold text-slate-800 dark:text-slate-100">Voice Assistant</p>
           </div>
-          <p className="text-xs text-slate-500 font-medium">{log}</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">{log}</p>
         </div>
       )}
       <Button
         onClick={toggleVoice}
-        className={`w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-2xl transition-all hover:scale-110 border-none ${isActive ? "bg-rose-500 hover:bg-rose-600 animate-bounce" : "bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700"}`}
+        className={`relative w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 border-none ${isActive ? "bg-rose-500 hover:bg-rose-600 shadow-rose-300/70 before:absolute before:inset-0 before:rounded-full before:ring-8 before:ring-rose-300/35 before:animate-pulse" : "bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 shadow-indigo-300/60"}`}
       >
-        {isActive ? "🛑" : "🎙️"}
+        {isActive ? <BotOff className="size-7 text-white" /> : <Bot className="size-7 text-white" />}
       </Button>
     </div>
   );
