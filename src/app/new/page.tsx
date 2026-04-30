@@ -1,7 +1,7 @@
 import { getAuthUser } from "@/app/actions/auth";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import PlaceSelectorClient from "@/components/PlaceSelectorClient";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -58,8 +58,7 @@ export default async function NewTripPage({ searchParams }: { searchParams: { de
           <form action={handleSubmitAction} className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-3">
-                <Label htmlFor="destination" className="text-slate-700 dark:text-slate-200 font-bold">Destination</Label>
-                <Input id="destination" name="destination" required defaultValue={prefilledDestination} placeholder="e.g. Kyoto, Japan" className="bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 focus-visible:ring-indigo-500 h-14 rounded-xl shadow-sm" />
+                <PlaceSelectorClient initial={prefilledDestination} />
               </div>
               <div className="space-y-3">
                 <Label htmlFor="budget" className="text-slate-700 dark:text-slate-200 font-bold">Budget Summary</Label>
